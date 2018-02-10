@@ -1,0 +1,12 @@
+{
+	"name": "EasyMod",
+	"version": "0.16.22",
+	"title": "EasyMod",
+	"title_original": "EasyMod",
+	"author": "Mawelture",
+	"homepage": "http://extraordinarily.win/",
+	"description": "Easy game, easy life",
+	"description_original": "Easy game, easy life",
+	"dependencies": ["base"],
+	"factorio_version": "0.16.22"
+}
