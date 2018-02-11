@@ -136,7 +136,7 @@ data:extend({
     type = "technology",
     name = "electric-energy-distribution-3",
     icon = "__base__/graphics/technology/electric-energy-distribution.png",
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {

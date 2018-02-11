@@ -917,7 +917,7 @@ data:extend({
     type = "technology",
     name = "ultimate-drill",
     icon = "__base__/graphics/technology/advanced-electronics.png",
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {

@@ -155,7 +155,7 @@ data:extend({
     type = "technology",
     name = "logistics-6",
     icon = "__base__/graphics/technology/logistics.png",
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {

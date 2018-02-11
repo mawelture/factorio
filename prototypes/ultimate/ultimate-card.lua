@@ -32,7 +32,7 @@ data:extend({
     type = "technology",
     name = "speed-module-9",
     icon = "__base__/graphics/technology/speed-module.png",
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {

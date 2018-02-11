@@ -103,7 +103,7 @@ data:extend(
     name = "ultimate-accumulators",
     icon = "__base__/graphics/technology/electric-energy-acumulators.png",
     localised_name = {"technology-name.electric-energy-accumulators-1"},
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {

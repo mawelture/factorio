@@ -93,7 +93,7 @@ data:extend({
     type = "technology",
     name = "effect-transmission-2",
     icon = "__base__/graphics/technology/effect-transmission.png",
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {

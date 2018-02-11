@@ -180,9 +180,9 @@ data:extend({
   
   {
     type = "technology",
-    name = "ultimate-turrets",
+    name = "ultimate-turret",
     icon = "__base__/graphics/technology/laser-turrets.png",
-    icon_size = 32,
+    icon_size = 128,
     effects =
     {
       {
