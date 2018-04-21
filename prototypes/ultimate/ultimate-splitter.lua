@@ -2,7 +2,7 @@ data:extend({
   {
     type = "splitter",
     name = "ultimate-splitter",
-    icon = "__base__/graphics/icons/express-splitter.png",
+    icon = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "ultimate-splitter"},
     max_health = 500,
@@ -35,7 +35,8 @@ data:extend({
     {
       north =
       {
-        filename = "__base__/graphics/entity/express-splitter/express-splitter-north.png",
+        -- filename = "__base__/graphics/entity/express-splitter/express-splitter-north.png",
+        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-north.png",
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
@@ -44,7 +45,7 @@ data:extend({
         shift = {0.21875, 0},
         hr_version =
         {
-          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-north.png",
+          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-north.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
@@ -56,7 +57,7 @@ data:extend({
       },
       east =
       {
-        filename = "__base__/graphics/entity/express-splitter/express-splitter-east.png",
+        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-east.png",
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
@@ -65,7 +66,7 @@ data:extend({
         shift = {0.109375, -0.03125},
         hr_version =
         {
-          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-east.png",
+          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-east.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
@@ -77,7 +78,7 @@ data:extend({
       },
       south =
       {
-        filename = "__base__/graphics/entity/express-splitter/express-splitter-south.png",
+        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-south.png",
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
@@ -86,7 +87,7 @@ data:extend({
         shift = {0.140625, -0.015625},
         hr_version =
         {
-          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-south.png",
+          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-south.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
@@ -98,7 +99,7 @@ data:extend({
       },
       west =
       {
-        filename = "__base__/graphics/entity/express-splitter/express-splitter-west.png",
+        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-west.png",
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
@@ -107,7 +108,7 @@ data:extend({
         shift = {0.296875, -0.03125},
         hr_version =
         {
-          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-west.png",
+          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-west.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
@@ -123,7 +124,8 @@ data:extend({
   {
     type = "item",
     name = "ultimate-splitter",
-    icon = "__base__/graphics/icons/express-splitter.png",
+    --icon = "__base__/graphics/icons/express-splitter.png",
+    icon = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
     icon_size = 32,

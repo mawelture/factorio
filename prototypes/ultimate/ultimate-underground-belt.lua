@@ -2,7 +2,7 @@ data:extend({
   {
     type = "underground-belt",
     name = "ultimate-underground-belt",
-    icon = "__base__/graphics/icons/express-underground-belt.png",
+    icon = "__EasyMod__/graphics/ultimate-underground-belt/ultimate-underground-belt.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "ultimate-underground-belt"},
@@ -57,7 +57,8 @@ data:extend({
       {
         sheet =
         {
-          filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
+          -- filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
+          filename = "__EasyMod__/graphics/ultimate-underground-belt/ultimate-underground-belt-structure.png",
           priority = "extra-high",
           shift = {0.25, 0},
           width = 57,
@@ -65,7 +66,8 @@ data:extend({
           y = 43,
           hr_version =
           {
-            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            -- filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            filename = "__EasyMod__/graphics/ultimate-underground-belt/hr-ultimate-underground-belt-structure.png",
             priority = "extra-high",
             shift = {0.15625, 0.0703125},
             width = 106,
@@ -79,14 +81,14 @@ data:extend({
       {
         sheet =
         {
-          filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
+          filename = "__EasyMod__/graphics/ultimate-underground-belt/ultimate-underground-belt-structure.png",
           priority = "extra-high",
           shift = {0.25, 0},
           width = 57,
           height = 43,
           hr_version =
           {
-            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            filename = "__EasyMod__/graphics/ultimate-underground-belt/hr-ultimate-underground-belt-structure.png",
             priority = "extra-high",
             shift = {0.15625, 0.0703125},
             width = 106,
@@ -105,7 +107,8 @@ data:extend({
   {
     type = "item",
     name = "ultimate-underground-belt",
-    icon = "__base__/graphics/icons/express-underground-belt.png",
+    --icon = "__base__/graphics/icons/express-underground-belt.png",
+    icon = "__EasyMod__/graphics/ultimate-underground-belt/ultimate-underground-belt.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
     icon_size = 32,
