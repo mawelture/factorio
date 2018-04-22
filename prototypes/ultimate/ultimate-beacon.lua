@@ -71,7 +71,7 @@ data:extend({
     icon_size = 32,
     order = "a[beacon]",
     place_result = "ultimate-beacon",
-    stack_size = 10
+    stack_size = 50
   },
   
   {

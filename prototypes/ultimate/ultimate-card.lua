@@ -9,7 +9,7 @@ data:extend({
     category = "speed",
     tier = 1,
     order = "a[speed]-a[speed-module-3]",
-    stack_size = 50,
+    stack_size = 1000,
     default_request_amount = 10,
     effect = { speed = {bonus = 1}, productivity = {bonus = 5}}
   },

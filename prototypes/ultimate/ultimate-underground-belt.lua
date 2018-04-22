@@ -6,9 +6,9 @@ data:extend({
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "ultimate-underground-belt"},
-    max_health = 150,
+    max_health = 2000,
     corpse = "small-remnants",
-    max_distance = 25,
+    max_distance = 100,
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
@@ -50,7 +50,7 @@ data:extend({
     starting_bottom = basic_belt_starting_bottom,
     starting_side = basic_belt_starting_side,
     fast_replaceable_group = "transport-belt",
-    speed = 0.5,
+    speed = 0.8,
     structure =
     {
       direction_in =
@@ -114,7 +114,7 @@ data:extend({
     icon_size = 32,
     order = "b[underground-belt]-c[express-underground-belt]",
     place_result = "ultimate-underground-belt",
-    stack_size = 50
+    stack_size = 500
   },
   
   {

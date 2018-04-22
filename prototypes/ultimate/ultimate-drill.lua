@@ -881,7 +881,7 @@ data:extend({
     icon_size = 32,
     order = "a[items]-b[electric-mining-drill]",
     place_result = "ultimate-drill",
-    stack_size = 50
+    stack_size = 100
   },
   
   {

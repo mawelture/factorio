@@ -135,7 +135,7 @@ data:extend({
     icon_size = 32,
     order = "r",
     place_result = "ultimate-transport-belt",
-    stack_size = 500
+    stack_size = 2000
   },
   
   {
