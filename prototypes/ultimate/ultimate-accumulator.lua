@@ -125,3 +125,12 @@ data:extend(
     order = "c-e-a",
   }
 })
+
+
+
+-- /c game.local_player.insert{name='ultimate-accumulator', count=100}
+
+
+-- /c game.players[1].force.research_all_technologies()
+
+--/c game.players[1].insert{name='ultimate-transport-lamp', count=100}

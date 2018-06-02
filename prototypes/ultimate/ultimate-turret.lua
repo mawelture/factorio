@@ -122,11 +122,11 @@ data:extend({
     {
       type = "projectile",
       ammo_category = "electric",
-      cooldown = 10,
+      cooldown = 5,
       projectile_center = {-0.09375, -0.2},
       projectile_creation_distance = 1.4,
       range = 200,
-      damage_modifier = 4,
+      damage_modifier = 200,
       ammo_type =
       {
         type = "projectile",
