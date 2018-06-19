@@ -127,9 +127,10 @@ data:extend({
     --icon = "__base__/graphics/icons/express-splitter.png",
     icon = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "belt",
+    --subgroup = "belt",
+    subgroup = "mx-transport",
     icon_size = 32,
-    order = "d[loader]-a[basic-loader]",
+    order = "a-c",
     place_result = "ultimate-splitter",
     stack_size = 100
   },

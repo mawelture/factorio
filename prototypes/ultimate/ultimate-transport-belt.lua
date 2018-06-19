@@ -131,9 +131,10 @@ data:extend({
     name = "ultimate-transport-belt",
     icon = "__EasyMod__/graphics/ultimate-transport-belt/icon_ultimate-transport-belt.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "belt",
+    --subgroup = "belt",
+    subgroup = "mx-transport",
     icon_size = 32,
-    order = "r",
+    order = "a-a",
     place_result = "ultimate-transport-belt",
     stack_size = 2000
   },

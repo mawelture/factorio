@@ -110,9 +110,10 @@ data:extend({
     --icon = "__base__/graphics/icons/express-underground-belt.png",
     icon = "__EasyMod__/graphics/ultimate-underground-belt/ultimate-underground-belt.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "belt",
+    --subgroup = "belt",
+    subgroup = "mx-transport",
     icon_size = 32,
-    order = "b[underground-belt]-c[express-underground-belt]",
+    order = "a-b",
     place_result = "ultimate-underground-belt",
     stack_size = 500
   },

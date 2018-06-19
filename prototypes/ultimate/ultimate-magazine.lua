@@ -34,7 +34,8 @@ data:extend({
             }
         },
         magazine_size = 10,
-        subgroup = "ammo",
+        --subgroup = "ammo",
+        subgroup = "mx-weapon",
         order = "a[basic-clips]-c[ultimate-magazine]",
         stack_size = 200
     },

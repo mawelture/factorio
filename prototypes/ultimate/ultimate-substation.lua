@@ -112,8 +112,9 @@ data:extend({
     name = "ultimate-substation",
     icon = "__base__/graphics/icons/substation.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "energy-pipe-distribution",
-    order = "a[energy]-d[substation]",
+    --subgroup = "energy-pipe-distribution",
+    subgroup = "mx-electric",
+    order = "a-a",
     place_result = "ultimate-substation",
     stack_size = 200,
     icon_size = 32

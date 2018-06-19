@@ -877,9 +877,10 @@ data:extend({
     name = "ultimate-drill",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "extraction-machine",
+    --subgroup = "extraction-machine",
+    subgroup = "mx-enhance",
     icon_size = 32,
-    order = "a[items]-b[electric-mining-drill]",
+    order = "a-c",
     place_result = "ultimate-drill",
     stack_size = 100
   },

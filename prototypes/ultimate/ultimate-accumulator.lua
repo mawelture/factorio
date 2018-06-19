@@ -79,9 +79,10 @@ data:extend(
     name = "ultimate-accumulator",
     icon = "__base__/graphics/icons/accumulator.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "energy",
+    --subgroup = "energy",
+    subgroup = "mx-electric",
     icon_size = 32,
-    order = "e[accumulator]-a[accumulator]",
+    order = "a-c",
     place_result = "ultimate-accumulator",
     stack_size = 300
   },

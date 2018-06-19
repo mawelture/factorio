@@ -30,9 +30,10 @@ data:extend({
     name = "ultimate-solar",
     icon = "__base__/graphics/icons/solar-panel.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "energy",
+    --subgroup = "energy",
+    subgroup = "mx-electric",
     icon_size = 32,
-    order = "d[solar-panel]-a[solar-panel]",
+    order = "a-b",
     place_result = "ultimate-solar",
     stack_size = 200
   },

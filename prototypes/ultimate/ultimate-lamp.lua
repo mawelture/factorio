@@ -4,9 +4,10 @@ data:extend({
     name = "ultimate-lamp",
     icon = "__base__/graphics/icons/small-lamp.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "circuit-network",
+    --subgroup = "circuit-network",
+    subgroup = "mx-electric",
     icon_size = 32,
-    order = "a[light]-a[small-lamp]",
+    order = "a-d",
     place_result = "ultimate-lamp",
     stack_size = 50
   },
