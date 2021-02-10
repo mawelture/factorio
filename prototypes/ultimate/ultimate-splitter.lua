@@ -1,136 +1,79 @@
-data:extend({
-  {
-    type = "splitter",
-    name = "ultimate-splitter",
-    icon = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter.png",
-    flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "ultimate-splitter"},
-    max_health = 500,
-    icon_size = 32,
-    corpse = "medium-remnants",
-    resistances =
-    {
-      {
-        type = "fire",
-        percent = 60
-      }
-    },
-    collision_box = {{-0.9, -0.4}, {0.9, 0.4}},
-    selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
-    animation_speed_coefficient = 32,
-    structure_animation_speed_coefficient = 1.2,
-    structure_animation_movement_cooldown = 10,
-    belt_horizontal = express_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = express_belt_vertical,
-    ending_top = express_belt_ending_top,
-    ending_bottom = express_belt_ending_bottom,
-    ending_side = express_belt_ending_side,
-    starting_top = express_belt_starting_top,
-    starting_bottom = express_belt_starting_bottom,
-    starting_side = express_belt_starting_side,
-    ending_patch = ending_patch_prototype,
-    fast_replaceable_group = "splitter",
-    speed = 0.5,
-    structure =
-    {
-      north =
-      {
-        -- filename = "__base__/graphics/entity/express-splitter/express-splitter-north.png",
-        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-north.png",
-        frame_count = 32,
-        line_length = 16,
+local mk5 = table.deepcopy(data.raw["splitter"]["splitter"])
+mk5.name = "ultimate-splitter"
+mk5.icon = "__EasyMod__/graphics/ultimate-splitter/icon-" .. mk5.name .. ".png"
+mk5.icon_size = 64
+mk5.icon_mipmaps = 4
+mk5.minable.result = mk5.name
+mk5.max_health = 210
+mk5.structure_animation_speed_coefficient = 0.7
+mk5.structure_animation_movement_cooldown = 10
+mk5.next_upgrade = nil
+mk5.speed = 0.5
+mk5.structure_patch = nil
+mk5.belt_animation_set = {
+    animation_set = {
+        filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
         priority = "extra-high",
-        width = 83,
-        height = 36,
-        shift = {0.21875, 0},
-        hr_version =
-        {
-          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-north.png",
-          frame_count = 32,
-          line_length = 8,
-          priority = "extra-high",
-          width = 164,
-          height = 70,
-          shift = {0.265625, 0},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-east.png",
+        width = 64,
+        height = 64,
         frame_count = 32,
-        line_length = 16,
-        priority = "extra-high",
-        width = 51,
-        height = 80,
-        shift = {0.109375, -0.03125},
-        hr_version =
-        {
-          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-east.png",
-          frame_count = 32,
-          line_length = 8,
-          priority = "extra-high",
-          width = 93,
-          height = 157,
-          shift = {0.148438, -0.179688},
-          scale = 0.5
+        direction_count = 20,
+        hr_version = {
+            filename = "__EasyMod__/graphics/ultimate-transport-belt/hr-ultimate-transport-belt.png",
+            priority = "extra-high",
+            width = 128,
+            height = 128,
+            scale = 0.5,
+            frame_count = 32,
+            direction_count = 20
         }
-      },
-      south =
-      {
-        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-south.png",
-        frame_count = 32,
-        line_length = 16,
-        priority = "extra-high",
-        width = 85,
-        height = 35,
-        shift = {0.140625, -0.015625},
-        hr_version =
-        {
-          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-south.png",
-          frame_count = 32,
-          line_length = 8,
-          priority = "extra-high",
-          width = 168,
-          height = 67,
-          shift = {0.140625, 0.0234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-west.png",
-        frame_count = 32,
-        line_length = 16,
-        priority = "extra-high",
-        width = 51,
-        height = 78,
-        shift = {0.296875, -0.03125},
-        hr_version =
-        {
-          filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-west.png",
-          frame_count = 32,
-          line_length = 8,
-          priority = "extra-high",
-          width = 94,
-          height = 154,
-          shift = {0.203125, -0.109375},
-          scale = 0.5
-        }
-      }
     }
-  },
-  
+}
+
+for _, direction in pairs({"north", "east", "south", "west"}) do
+    mk5.structure[direction].filename = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter-" .. direction .. ".png"
+    mk5.structure[direction].hr_version.filename = "__EasyMod__/graphics/ultimate-splitter/hr-ultimate-splitter-" .. direction .. ".png"
+end
+
+-- This will need to be changed if we move to top/bottom graphics like they have in the 0.17/0.18 base game graphics
+mk5.structure.north.width = 82
+mk5.structure.north.height = 36
+mk5.structure.north.hr_version.width = 160
+mk5.structure.north.hr_version.height = 70
+mk5.structure.north.shift = util.by_pixel(6, 0)
+mk5.structure.north.hr_version.shift = util.by_pixel(7, 0)
+
+mk5.structure.east.width = 46
+mk5.structure.east.height = 80
+mk5.structure.east.hr_version.width = 90
+mk5.structure.east.hr_version.height = 160
+mk5.structure.east.shift = util.by_pixel(4, -6)
+mk5.structure.east.hr_version.shift = util.by_pixel(4, -6)
+
+mk5.structure.south.width = 82
+mk5.structure.south.height = 32
+mk5.structure.south.hr_version.width = 164
+mk5.structure.south.hr_version.height = 64
+mk5.structure.south.shift = util.by_pixel(4, 0)
+mk5.structure.south.hr_version.shift = util.by_pixel(4, 0)
+
+mk5.structure.west.width = 46
+mk5.structure.west.height = 76
+mk5.structure.west.hr_version.width = 94
+mk5.structure.west.hr_version.height = 150
+mk5.structure.west.shift = util.by_pixel(6, -4)
+mk5.structure.west.hr_version.shift = util.by_pixel(6, -4)
+
+
+data:extend({
+  mk5,
   {
     type = "item",
     name = "ultimate-splitter",
-    --icon = "__base__/graphics/icons/express-splitter.png",
-    icon = "__EasyMod__/graphics/ultimate-splitter/ultimate-splitter.png",
-    flags = {"goes-to-quickbar"},
-    --subgroup = "belt",
+    icon = "__EasyMod__/graphics/ultimate-splitter/icon-ultimate-splitter.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "mx-transport",
-    icon_size = 32,
-    order = "a-c",
+    order = "c[splitter]-c[express-splitter]",
     place_result = "ultimate-splitter",
     stack_size = 100
   },

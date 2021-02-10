@@ -2,17 +2,22 @@ data:extend({
     {
         type = "module",
         name = "ultimate-card",
+        localised_description = {"item-description.speed-module"},
         icon = "__base__/graphics/icons/speed-module-3.png",
-        flags = {"goes-to-main-inventory"},
-        --subgroup = "module",
+        icon_size = 64, icon_mipmaps = 4,
         subgroup = "mx-enhance",
-        icon_size = 32,
         category = "speed",
-        tier = 1,
-        order = "a-a",
-        stack_size = 10,
-        default_request_amount = 10,
-        effect = { speed = {bonus = 1}, productivity = {bonus = 5}}
+        tier = 3,
+        order = "a[speed]-c[speed-module-3]",
+        stack_size = 50,
+        effect = { speed = {bonus = 1}, productivity = {bonus = 5}},
+        beacon_tint =
+        {
+            primary = {r = 0.441, g = 0.714, b = 1.000, a = 1.000}, -- #70b6ffff
+            secondary = {r = 0.388, g = 0.976, b = 1.000, a = 1.000}, -- #63f8ffff
+        },
+        art_style = "vanilla",
+        requires_beacon_alt_mode = false
     },
 
   --Recipe
@@ -22,8 +27,9 @@ data:extend({
         enabled = false,
         ingredients =
         {
-          {"advanced-circuit", 1},
-          {"electronic-circuit", 1}
+            {"speed-module-3", 5},
+            {"advanced-circuit", 5},
+            {"processing-unit", 5}
         },
         energy_required = 10,
         result = "ultimate-card"
@@ -31,9 +37,9 @@ data:extend({
   
     {
         type = "technology",
-        name = "speed-module-9",
-        icon = "__base__/graphics/technology/speed-module.png",
-        icon_size = 128,
+        name = "ultimate-speed-module",
+        icon = "__base__/graphics/technology/speed-module-3.png",
+        icon_size = 256, icon_mipmaps = 4,
         effects =
         {
             {
@@ -47,9 +53,9 @@ data:extend({
             count = 75,
             ingredients =
             {
-                {"science-pack-1", 1},
-                {"science-pack-2", 1},
-                {"science-pack-3", 1},
+                {"automation-science-pack", 1},
+                {"logistic-science-pack", 1},
+                {"chemical-science-pack", 1},
                 {"production-science-pack", 1}
             },
             time = 15

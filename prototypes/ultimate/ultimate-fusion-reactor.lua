@@ -1,37 +1,19 @@
+local fre3 = table.deepcopy(data.raw["generator-equipment"]["fusion-reactor-equipment"])
+fre3.name = "ultimate-fusion-reactor"
+fre3.sprite.filename = "__EasyMod__/graphics/ultimate-fusion-reactor/ultimate-fusion-reactor.png"
+fre3.power = "1000MW"
+
 data:extend({
-    {
-        type = "generator-equipment",
-        name = "ultimate-fusion-reactor",
-        sprite =
-        {
-          filename = "__EasyMod__/graphics/ultimate-fusion-reactor/ultimate-fusion-reactor.png",
-          width = 128,
-          height = 128,
-          priority = "medium"
-        },
-        shape =
-        {
-          width = 2,
-          height = 2,
-          type = "full"
-        },
-        energy_source =
-        {
-          type = "electric",
-          usage_priority = "primary-output"
-        },
-        power = "1000MW",
-        categories = {"armor"}
-    },
+    fre3, 
     {
         type = "item",
         name = "ultimate-fusion-reactor",
-        icon = "__EasyMod__/graphics/ultimate-fusion-reactor/ultimate-fusion-reactor-icon.png",
-        icon_size = 32,
+        icon = "__EasyMod__/graphics/ultimate-fusion-reactor/icon-ultimate-fusion-reactor.png",
+        icon_size = 64, icon_mipmaps = 4,
         placed_as_equipment_result = "ultimate-fusion-reactor",
-        flags = {"goes-to-main-inventory"},
         subgroup = "mx-equipment",
-        order = "a-a",
+        order = "a[energy-source]-b[fusion-reactor]",
+        default_request_amount = 1,
         stack_size = 20
     },
     {
@@ -52,8 +34,8 @@ data:extend({
         type = "technology",
         name = "power-armor-equipment",
         icon = "__base__/graphics/technology/power-armor-mk2.png",
-        icon_size = 128,
-        prerequisites = {"titanium-processing", "rocket-silo", "power-armor-2"},
+        icon_size = 256,
+        prerequisites = {"fusion-reactor-equipment"},
         effects =
         {
             {
@@ -66,12 +48,12 @@ data:extend({
             count = 800,
             ingredients =
             {
-                {"science-pack-1", 1}, 
-                {"science-pack-2", 1}, 
-                {"science-pack-3", 1},
-                {"military-science-pack", 1}, 
+                {"automation-science-pack", 1},
+                {"logistic-science-pack", 1},
+                {"chemical-science-pack", 1},
+                {"military-science-pack", 1},
                 {"production-science-pack", 1},
-                {"high-tech-science-pack", 1}
+                {"utility-science-pack", 1}
             },
             time = 45
         },

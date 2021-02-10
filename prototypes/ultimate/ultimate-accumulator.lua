@@ -1,70 +1,59 @@
+local hit_effects = require ("__base__.prototypes.entity.hit-effects")
+local sounds = require ("__base__.prototypes.entity.sounds")
+
 data:extend(
 {
   {
     type = "accumulator",
     name = "ultimate-accumulator",
     icon = "__base__/graphics/icons/accumulator.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "accumulator"},
+    minable = {mining_time = 0.1, result = "accumulator"},
     max_health = 150,
-    corpse = "medium-remnants",
+    corpse = "accumulator-remnants",
+    dying_explosion = "accumulator-explosion",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
+    drawing_box = {{-1, -1.5}, {1, 1}},
     energy_source =
     {
       type = "electric",
       buffer_capacity = "1TJ",
-      usage_priority = "terciary",
+      usage_priority = "tertiary",
       input_flow_limit = "9000MW",
       output_flow_limit = "9000MW"
     },
-    picture =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator.png",
-      priority = "extra-high",
-      width = 124,
-      height = 103,
-      shift = {0.6875, -0.203125}
-    },
-    charge_animation =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator-charge-animation.png",
-      width = 138,
-      height = 135,
-      line_length = 8,
-      frame_count = 24,
-      shift = {0.46875, -0.640625},
-      animation_speed = 0.5
-    },
+    picture = accumulator_picture(),
+    charge_animation = accumulator_charge(),
+    water_reflection = accumulator_reflection(),
 
     charge_cooldown = 30,
-    charge_light = {intensity = 0.3, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
-    discharge_animation =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator-discharge-animation.png",
-      width = 147,
-      height = 128,
-      line_length = 8,
-      frame_count = 24,
-      shift = {0.390625, -0.53125},
-      animation_speed = 0.5
-    },
+    --charge_light = {intensity = 0.3, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
+    discharge_animation = accumulator_discharge(),
     discharge_cooldown = 60,
-    discharge_light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    --discharge_light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
+    vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/accumulator-working.ogg",
-        volume = 1
-      },
-      idle_sound = {
-        filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.4
       },
-      max_sounds_per_type = 5
+      idle_sound =
+      {
+        filename = "__base__/sound/accumulator-idle.ogg",
+        volume = 0.35
+      },
+      --persistent = true,
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.5,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
 
     circuit_wire_connection_point = circuit_connector_definitions["accumulator"].points,
@@ -73,16 +62,15 @@ data:extend(
 
     default_output_signal = {type = "virtual", name = "signal-A"}
   },
+
   
   {
     type = "item",
     name = "ultimate-accumulator",
     icon = "__base__/graphics/icons/accumulator.png",
-    flags = {"goes-to-quickbar"},
-    --subgroup = "energy",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "mx-electric",
-    icon_size = 32,
-    order = "a-c",
+    order = "e[accumulator]-a[accumulator]",
     place_result = "ultimate-accumulator",
     stack_size = 300
   },
@@ -99,12 +87,12 @@ data:extend(
     },
     result = "ultimate-accumulator"
   },
-   {
+  {
     type = "technology",
     name = "ultimate-accumulators",
+    icon_size = 256, icon_mipmaps = 4,
     icon = "__base__/graphics/technology/electric-energy-acumulators.png",
     localised_name = {"technology-name.electric-energy-accumulators-1"},
-    icon_size = 128,
     effects =
     {
       {
@@ -112,19 +100,19 @@ data:extend(
         recipe = "ultimate-accumulator"
       }
     },
-    prerequisites = {"electric-energy-accumulators-1"},
+    prerequisites = {"electric-energy-distribution-1", "battery"},
     unit =
     {
       count = 10,
       ingredients =
       {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
       },
       time = 5
     },
-    order = "c-e-a",
-  }
+    order = "c-e-a"
+  },
 })
 
 

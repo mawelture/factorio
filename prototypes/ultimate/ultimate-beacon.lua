@@ -1,78 +1,91 @@
+local hit_effects = require ("__base__.prototypes.entity.hit-effects")
+local sounds = require("__base__.prototypes.entity.sounds")
+
 data:extend({
-  { -- twBeacon7
+  {
     type = "beacon",
     name = "ultimate-beacon",
-    icon = "__EasyMod__/graphics/ultimate-beacon/ultimate-beacon-icon.png",
-	  icon_size = 32,
+    icon = "__base__/graphics/icons/beacon.png",
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "ultimate-beacon"},
-    max_health = 1000,
-    corpse = "big-remnants",
-    dying_explosion = "medium-explosion",
-    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    minable = {mining_time = 0.2, result = "ultimate-beacon"},
+    max_health = 200,
+    corpse = "beacon-remnants",
+    dying_explosion = "beacon-explosion",
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    drawing_box = {{-1.5, -2.2}, {1.5, 1.3}},
     allowed_effects = {"consumption", "speed", "pollution", "productivity"},
-    base_picture =
-    {
-      filename = "__EasyMod__/graphics/ultimate-beacon/beacon-base.png",
-      width = 116,
-      height = 93,
-      shift = { 0.34375/3, 0.046875/3},
-	  scale = 0.33
-    },
-    animation =
-    {
-      filename = "__EasyMod__/graphics/ultimate-beacon/beacon-antenna.png",
-      width = 54,
-      height = 50,
-      line_length = 8,
-      frame_count = 32,
-      shift = { -0.03125/3, -1.71875/3},
-      animation_speed = 0.5,
-	  scale = 0.33
-    },
-    animation_shadow =
-    {
-      filename = "__EasyMod__/graphics/ultimate-beacon/beacon-antenna-shadow.png",
-      width = 63,
-      height = 49,
-      line_length = 8,
-      frame_count = 32,
-      shift = { 3.140625/3, 0.484375/3},
-      animation_speed = 0.5,
-	  scale = 0.33
-    },
+
+    graphics_set = require("prototypes.animations.beacon-animations"),
+
     radius_visualisation_picture =
     {
-      filename = "__EasyMod__/graphics/ultimate-beacon/beacon-radius-visualization.png",
-      width = 12,
-      height = 12
+      filename = "__base__/graphics/entity/beacon/beacon-radius-visualization.png",
+      priority = "extra-high-no-scale",
+      width = 10,
+      height = 10
     },
-    supply_area_distance = 20,
+    supply_area_distance = 14,
     energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input"
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    energy_usage = "600kW",
-    distribution_effectivity = 2.0,
+    vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/beacon-1.ogg",
+          volume = 0.2
+        },
+        {
+          filename = "__base__/sound/beacon-2.ogg",
+          volume = 0.2
+        }
+      },
+      audible_distance_modifier = 0.33,
+      max_sounds_per_type = 3
+      -- fade_in_ticks = 4,
+      -- fade_out_ticks = 60
+    },
+    energy_usage = "480kW",
+    distribution_effectivity = 0.5,
     module_specification =
     {
-      module_slots = 10,
-      module_info_icon_shift = {0, 0.5},
-      module_info_multi_row_initial_height_modifier = -0.3
+      module_slots = 8,
+      module_info_icon_shift = {0, 0},
+      module_info_multi_row_initial_height_modifier = -0.3,
+      module_info_max_icons_per_row = 2
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/beacon/beacon-reflection.png",
+        priority = "extra-high",
+        width = 24,
+        height = 28,
+        shift = util.by_pixel(0, 55),
+        variation_count = 1,
+        scale = 5
+      },
+      rotate = false,
+      orientation_to_variation = false
     }
   },
   {
     type = "item",
     name = "ultimate-beacon",
-    icon = "__EasyMod__/graphics/ultimate-beacon/ultimate-beacon-icon.png",
-    flags = {"goes-to-quickbar"},
-    --subgroup = "module",
+    icon = "__base__/graphics/icons/beacon.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "mx-enhance",
-    icon_size = 32,
-    order = "a-b",
+    order = "a[beacon]",
     place_result = "ultimate-beacon",
     stack_size = 50
   },
@@ -110,10 +123,10 @@ data:extend({
       count = 15,
       ingredients =
       {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1},
-        {"high-tech-science-pack", 1}
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1}
       },
       time = 10
     },

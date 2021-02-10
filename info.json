@@ -1,6 +1,6 @@
 {
 	"name": "EasyMod",
-	"version": "0.16.22",
+	"version": "1.1.19",
 	"title": "EasyMod",
 	"title_original": "EasyMod",
 	"author": "Mawelture",
@@ -8,5 +8,5 @@
 	"description": "Easy game, easy life",
 	"description_original": "Easy game, easy life",
 	"dependencies": ["base"],
-	"factorio_version": "0.16.22"
+	"factorio_version": "1.1.19"
 }

@@ -1,144 +1,29 @@
-ultimate_belt_horizontal =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32
-  }
-ultimate_belt_vertical =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 40,
-  }
-ultimate_belt_ending_top =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 80
-  }
-ultimate_belt_ending_bottom =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 120
-  }
-ultimate_belt_ending_side =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 160
-  }
-ultimate_belt_starting_top =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 200
-  }
-ultimate_belt_starting_bottom =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 240
-  }
-ultimate_belt_starting_side =
-  {
-    filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-    priority = "extra-high",
-    width = 40,
-    height = 40,
-    frame_count = 32,
-    y = 280
-  }
+local Belt = require("ultimate-transport-belt-pictures")
+
+local ubt = table.deepcopy(data.raw["transport-belt"]["transport-belt"])
+ubt.name = "ultimate-transport-belt"
+ubt.next_upgrade = nil
+ubt.icon = "__EasyMod__/graphics/ultimate-transport-belt/icon-" .. ubt.name .. ".png"
+ubt.icon_size = 64
+ubt.icon_mipmaps = 4
+ubt.minable.result = ubt.name
+ubt.max_health = 190
+ubt.speed = 0.5
+ubt.belt_animation_set = Belt.ultimate_transport_belt_set
 
 data:extend({
-  {
-    type = "transport-belt",
-    name = "ultimate-transport-belt",
-    icon = "__EasyMod__/graphics/ultimate-transport-belt/icon_ultimate-transport-belt.png",
-    flags = {"placeable-neutral", "player-creation"},
-    icon_size = 32,
-    minable = {hardness = 0.2, mining_time = 0.3, result = "ultimate-transport-belt"},
-    max_health = 500,
-    corpse = "small-remnants",
-    resistances =
-    {
-      {
-        type = "fire",
-        percent = 50
-      }
-    },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/express-transport-belt.ogg",
-        volume = 0.4
-      },
-      max_sounds_per_type = 3
-    },
-    animation_speed_coefficient = 32,
-    animations =
-    {
-      filename = "__EasyMod__/graphics/ultimate-transport-belt/ultimate-transport-belt.png",
-      priority = "extra-high",
-      width = 40,
-      height = 40,
-      frame_count = 32,
-      direction_count = 12
-    },
-    belt_horizontal = ultimate_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = ultimate_belt_vertical,
-    ending_top = ultimate_belt_ending_top,
-    ending_bottom = ultimate_belt_ending_bottom,
-    ending_side = ultimate_belt_ending_side,
-    starting_top = ultimate_belt_starting_top,
-    starting_bottom = ultimate_belt_starting_bottom,
-    starting_side = ultimate_belt_starting_side,
-    ending_patch = ending_patch_prototype,
-    ending_patch = ending_patch_prototype,
-    fast_replaceable_group = "transport-belt",
-    speed = 0.5,
-    connector_frame_sprites = transport_belt_connector_frame_sprites,
-    circuit_connector_sprites = transport_belt_circuit_connector_sprites,
-    circuit_wire_connection_point = transport_belt_circuit_wire_connection_point,
-    circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
-  },
-  
+  ubt,
   {
     type = "item",
     name = "ultimate-transport-belt",
-    icon = "__EasyMod__/graphics/ultimate-transport-belt/icon_ultimate-transport-belt.png",
-    flags = {"goes-to-quickbar"},
-    --subgroup = "belt",
+    source = "transport-belt",
+    icon = "__EasyMod__/graphics/ultimate-transport-belt/icon-ultimate-transport-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "mx-transport",
-    icon_size = 32,
-    order = "a-a",
+    order = "a[transport-belt]-c[express-transport-belt]",
     place_result = "ultimate-transport-belt",
     stack_size = 2000
   },
-  
   {
 		type = "recipe",
 		name = "ultimate-transport-belt",
@@ -154,9 +39,9 @@ data:extend({
   
   {
     type = "technology",
-    name = "logistics-6",
-    icon = "__base__/graphics/technology/logistics.png",
-    icon_size = 128,
+    name = "ultimate-logistics",
+    icon = "__EasyMod__/graphics/technology/logistics.png",
+    icon_size = 256,
     effects =
     {
       {
@@ -170,9 +55,11 @@ data:extend({
       count = 50,
       ingredients =
       {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1},
+        {"utility-science-pack", 1}
       },
       time = 5
     },

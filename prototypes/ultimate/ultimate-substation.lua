@@ -1,162 +1,221 @@
+local hit_effects = require ("__base__.prototypes.entity.hit-effects")
+local sounds = require("__base__.prototypes.entity.sounds")
+
 data:extend({
- 	
- 	{
-    type = "electric-pole",
-    name = "ultimate-substation",
-    icon = "__base__/graphics/icons/substation.png",
-    flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "ultimate-substation"},
-    max_health = 200,
-    icon_size = 32,
-    corpse = "medium-remnants",
-    track_coverage_during_build_by_moving = true,
-    resistances =
     {
-      {
-        type = "fire",
-        percent = 90
-      }
-    },
-    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
-    selection_box = {{-1, -1}, {1, 1}},
-    drawing_box = {{-1, -3}, {1, 1}},
-    maximum_wire_distance = 64,
-    supply_area_distance = 32,
-    pictures =
-    {
-      filename = "__base__/graphics/entity/substation/substation.png",
-      priority = "high",
-      width = 132,
-      height = 144,
-      direction_count = 4,
-      shift = {0.9, -1}
-    },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    working_sound =
-    {
-      sound = { filename = "__base__/sound/substation.ogg" },
-      apparent_volume = 1.5,
-      audible_distance_modifier = 0.5,
-      probability = 1 / (3 * 60) -- average pause between the sound is 3 seconds
-    },
-    connection_points =
-    {
-      {
-        shadow =
+        type = "electric-pole",
+        name = "ultimate-substation",
+        icon = "__base__/graphics/icons/substation.png",
+        icon_size = 64, icon_mipmaps = 4,
+        flags = {"placeable-neutral", "player-creation"},
+        minable = {mining_time = 0.1, result = "ultimate-substation"},
+        max_health = 200,
+        corpse = "substation-remnants",
+        dying_explosion = "substation-explosion",
+        track_coverage_during_build_by_moving = true,
+        resistances =
         {
-          copper = {1.9, -0.6},
-          green = {1.3, -0.6},
-          red = {2.65, -0.6}
-        },
-        wire =
         {
-          copper = {-0.25, -2.71875},
-          green = {-0.84375, -2.71875},
-          red = {0.34375, -2.71875}
+            type = "fire",
+            percent = 90
         }
-      },
-      {
-        shadow =
-        {
-          copper = {1.9, -0.6},
-          green = {1.2, -0.8},
-          red = {2.5, -0.35}
         },
-        wire =
+        collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
+        selection_box = {{-1, -1}, {1, 1}},
+        damaged_trigger_effect = hit_effects.entity({{-0.5, -2.5}, {0.5, 0.5}}),
+        drawing_box = {{-1, -3}, {1, 1}},
+        maximum_wire_distance = 60,
+        supply_area_distance = 30,
+        pictures =
         {
-          copper = {-0.21875, -2.71875},
-          green = {-0.65625, -3.03125},
-          red = {0.1875, -2.4375}
+        layers =
+        {
+
+            {
+            filename = "__base__/graphics/entity/substation/substation.png",
+            priority = "high",
+            width = 70,
+            height = 136,
+            direction_count = 4,
+            shift = util.by_pixel(0, 1-32),
+            hr_version =
+            {
+                filename = "__base__/graphics/entity/substation/hr-substation.png",
+                priority = "high",
+                width = 138,
+                height = 270,
+                direction_count = 4,
+                shift = util.by_pixel(0, 1-32),
+                scale = 0.5
+            }
+            },
+            {
+            filename = "__base__/graphics/entity/substation/substation-shadow.png",
+            priority = "high",
+            width = 186,
+            height = 52,
+            direction_count = 4,
+            shift = util.by_pixel(62, 42-32),
+            draw_as_shadow = true,
+            hr_version =
+            {
+                filename = "__base__/graphics/entity/substation/hr-substation-shadow.png",
+                priority = "high",
+                width = 370,
+                height = 104,
+                direction_count = 4,
+                shift = util.by_pixel(62, 42-32),
+                draw_as_shadow = true,
+                scale = 0.5
+            }
+            }
         }
-      },
-      {
-        shadow =
-        {
-          copper = {1.9, -0.6},
-          green = {1.9, -0.9},
-          red = {1.9, -0.3}
         },
-        wire =
+        vehicle_impact_sound = sounds.generic_impact,
+        open_sound = sounds.electric_network_open,
+        close_sound = sounds.electric_network_close,
+        working_sound =
         {
-          copper = {-0.21875, -2.71875},
-          green = {-0.21875, -3.15625},
-          red = {-0.21875, -2.34375}
-        }
-      },
-      {
-        shadow =
+        sound =
         {
-          copper = {1.8, -0.7},
-          green = {1.3, -0.6},
-          red = {2.4, -1.15}
+            filename = "__base__/sound/substation.ogg",
+            volume = 0.4
         },
-        wire =
+        max_sounds_per_type = 3,
+        audible_distance_modifier = 0.32,
+        fade_in_ticks = 30,
+        fade_out_ticks = 40,
+        use_doppler_shift = false
+        },
+        connection_points =
         {
-          copper = {-0.21875, -2.75},
-          green = {-0.65625, -2.4375},
-          red = {0.1875, -3.03125}
+        {
+            shadow =
+            {
+            copper = util.by_pixel(136, 8),
+            green = util.by_pixel(124, 8),
+            red = util.by_pixel(151, 9)
+            },
+            wire =
+            {
+            copper = util.by_pixel(0, -86),
+            green = util.by_pixel(-21, -82),
+            red = util.by_pixel(22, -81)
+            }
+        },
+        {
+            shadow =
+            {
+            copper = util.by_pixel(133, 9),
+            green = util.by_pixel(144, 21),
+            red = util.by_pixel(110, -3)
+            },
+            wire =
+            {
+            copper = util.by_pixel(0, -85),
+            green = util.by_pixel(15, -70),
+            red = util.by_pixel(-15, -92)
+            }
+        },
+        {
+            shadow =
+            {
+            copper = util.by_pixel(133, 9),
+            green = util.by_pixel(127, 26),
+            red = util.by_pixel(127, -8)
+            },
+            wire =
+            {
+            copper = util.by_pixel(0, -85),
+            green = util.by_pixel(0, -66),
+            red = util.by_pixel(0, -97)
+            }
+        },
+        {
+            shadow =
+            {
+            copper = util.by_pixel(133, 9),
+            green = util.by_pixel(111, 20),
+            red = util.by_pixel(144, -3)
+            },
+            wire =
+            {
+            copper = util.by_pixel(0, -86),
+            green = util.by_pixel(-15, -71),
+            red = util.by_pixel(15, -92)
+            }
         }
-      }
+        },
+        radius_visualisation_picture =
+        {
+        filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
+        width = 12,
+        height = 12,
+        priority = "extra-high-no-scale"
+        },
+        water_reflection =
+        {
+        pictures =
+        {
+            filename = "__base__/graphics/entity/substation/substation-reflection.png",
+            priority = "extra-high",
+            width = 20,
+            height = 28,
+            shift = util.by_pixel(0, 55),
+            variation_count = 1,
+            scale = 5
+        },
+        rotate = false,
+        orientation_to_variation = false
+        }
     },
-    radius_visualisation_picture =
     {
-      filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
-      width = 12,
-      height = 12,
-      priority = "extra-high-no-scale"
+        type = "item",
+        name = "ultimate-substation",
+        icon = "__base__/graphics/icons/substation.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "mx-electric",
+        order = "a[energy]-d[substation]",
+        place_result = "ultimate-substation",
+        stack_size = 200
     },
-  },
+    {
+        type = "recipe",
+        name = "ultimate-substation",
+        enabled = false,
+        ingredients =
+        {
+        {"steel-plate", 10},
+        {"advanced-circuit", 2},
+        {"copper-plate", 5}
+        },
+        result = "ultimate-substation"
+    },
   
-  {
-    type = "item",
-    name = "ultimate-substation",
-    icon = "__base__/graphics/icons/substation.png",
-    flags = {"goes-to-quickbar"},
-    --subgroup = "energy-pipe-distribution",
-    subgroup = "mx-electric",
-    order = "a-a",
-    place_result = "ultimate-substation",
-    stack_size = 200,
-    icon_size = 32
-  },
-  
-  {
-    type = "recipe",
-    name = "ultimate-substation",
-    enabled = false,
-    ingredients =
     {
-      {"steel-plate", 10},
-      {"advanced-circuit", 2},
-      {"copper-plate", 5}
+        type = "technology",
+        name = "electric-energy-distribution-3",
+        icon_size = 256, icon_mipmaps = 4,
+        icon = "__base__/graphics/technology/electric-energy-distribution-2.png",
+        effects =
+        {
+        {
+            type = "unlock-recipe",
+            recipe = "ultimate-substation"
+        }
+        },
+        prerequisites = {"electric-energy-distribution-2"},
+        unit =
+        {
+        count = 20,
+        ingredients =
+        {
+            {"automation-science-pack", 1},
+            {"logistic-science-pack", 1},
+            {"chemical-science-pack", 1}
+        },
+        time = 10
+        },
+        order = "c-e-c"
     },
-    result = "ultimate-substation"
-  },
-  
-  {
-    type = "technology",
-    name = "electric-energy-distribution-3",
-    icon = "__base__/graphics/technology/electric-energy-distribution.png",
-    icon_size = 128,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "ultimate-substation"
-      }
-    },
-    prerequisites = {"electric-energy-distribution-2"},
-    unit =
-    {
-      count = 20,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 10
-    },
-    order = "c-e-c",
-  }
 })

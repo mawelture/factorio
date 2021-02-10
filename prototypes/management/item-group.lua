@@ -3,7 +3,8 @@ data:extend({
       type = "item-group",
       name = "mx",
       icon = "__base__/graphics/item-group/signals.png",
-      icon_size = 64,
+      icon_size = 128,
+      icon_mipmaps = 2,
       inventory_order = "m",
       order = "m"
     },
